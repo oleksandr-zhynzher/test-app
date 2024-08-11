@@ -56,8 +56,9 @@ jobs:
         run: yarn lighthouse
 
       - name: Run Chromatic
-        run: yarn test:generate-output
-        run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
+        run: |
+          yarn test:generate-output 
+          npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
 
       - name: Snyk Security Scan
         env:
@@ -65,4 +66,3 @@ jobs:
         run: |
           yarn run snyk:auth $SNYK_TOKEN
           yarn run snyk:test
-
