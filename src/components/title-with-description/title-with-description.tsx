@@ -19,10 +19,10 @@ export const TitleWithDescription: React.FC<TitleWithDescriptionProperties> = ({
 
   return (
     <>
-      <HeadingTag className={`text-xl font-semibold mb-2 ${titleCx}`}>
-        {title}
-      </HeadingTag>
-      {description && <p className='text-sm text-gray-600'>{description}</p>}
+      <HeadingTag className={`text-xl mb-2 ${titleCx}`}>{title}</HeadingTag>
+      {description && (
+        <p className='text-sm text-gray-600 text-red-500'>{description}</p>
+      )}
     </>
   );
 };

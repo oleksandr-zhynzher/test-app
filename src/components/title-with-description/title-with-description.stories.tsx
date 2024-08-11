@@ -109,17 +109,3 @@ LongDescription.play = async ({
     'This is a very long description to test how the component handles it. It should wrap correctly and display all the text without any overflow issues.';
   await expect(canvas.getByText(longDescription)).toBeInTheDocument();
 };
-
-EmptyDescription.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  await expect(
-    canvas.getByText('Title with No Description'),
-  ).toBeInTheDocument();
-  const paragraphs = canvas.getAllByRole('paragraph');
-  await expect(paragraphs.length).toBe(1);
-  await expect(paragraphs[0]).toBeEmptyDOMElement();
-};

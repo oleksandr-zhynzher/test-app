@@ -45,3 +45,5 @@ stories/
 next-env.d.ts
 
 storybook-static/
+
+.lighthouseci/
