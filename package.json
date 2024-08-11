@@ -21,7 +21,7 @@
     "storybook:build": "storybook build",
     "storybook:test": "test-storybook",
     "build-storybook": "storybook build",
-    "madge:find-leaf-modules": "madge --leaves src",
+    "madge:find-leaf-modules": "madge --help",
     "madge:find-unused-modules": "madge --orphans src",
     "madge:check-circular-deps": "madge --circular src",
     "madge:generate-dependency-graph": "madge --image graph.svg src",
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@codecov/webpack-plugin": "0.0.1-beta.10",
     "@lhci/cli": "^0.14.0",
     "@next/bundle-analyzer": "^14.2.5",
     "@storybook/addon-a11y": "^8.2.8",

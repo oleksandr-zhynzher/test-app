@@ -46,6 +46,15 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
 
+      - name: Run Codecov Bundle Analyzer
+        run: yarn run analyze
+
+      - name: Check Unused Dependencies
+        run: yarn run depcheck
+
+      - name: Check Circular Dependencies
+        run: yarn run madge:check-circular-deps
+
       - name: Run Lighthouse audit
         run: yarn lighthouse
 
