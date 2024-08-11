@@ -66,3 +66,4 @@ jobs:
         run: |
           yarn run snyk:auth $SNYK_TOKEN
           yarn run snyk:test
+
