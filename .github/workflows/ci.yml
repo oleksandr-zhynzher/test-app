@@ -46,9 +46,6 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
 
-      - name: Run Codecov Bundle Analyzer
-        run: yarn run analyze
-
       - name: Check Unused Dependencies
         run: yarn run depcheck
 
@@ -67,3 +64,4 @@ jobs:
         run: |
           yarn run snyk:auth $SNYK_TOKEN
           yarn run snyk:test
+

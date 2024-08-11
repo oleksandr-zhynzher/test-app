@@ -1,21 +1,10 @@
 /** @type {import('next').NextConfig} */
-import { codecovWebpackPlugin } from '@codecov/webpack-plugin';
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-export default {
-  /* ... */
-  webpack: (config) => {
-    if (process.env.ANALYZE === 'true') {
-      if (process.env.CODECOV_TOKEN) {
-        config.plugins.push(
-          codecovWebpackPlugin({
-            enableBundleAnalysis: true,
-            bundleName: '<bundle project name>',
-            uploadToken: process.env.CODECOV_TOKEN,
-          }),
-        );
-      }
-    }
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-    return config;
-  },
-};
+export default bundleAnalyzer({
+  // your existing configuration here
+});
