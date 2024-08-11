@@ -29,6 +29,9 @@ jobs:
       - name: Lint Code
         run: yarn run lint
 
+      - name: Check Code With Prettier
+        run: yarn run prettier
+
       - name: Run Unit Tests
         run: yarn run test:coverage
 
@@ -40,6 +43,12 @@ jobs:
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: true
+
+      - name: Run Lighthouse audit
+        run: yarn lighthouse
+
+      - name: Run Chromatic
+        run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
 
       - name: Snyk Security Scan
         env:
