@@ -20,21 +20,30 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: yarn install
 
-      - name: Run build
-        run: npm run build
+      - name: Run Build
+        run: yarn run build
 
-      - name: Lint code
-        run: npm run lint
+      - name: Lint Code
+        run: yarn run lint
 
-      - name: Run tests
-        run: npm run test
+      - name: Run Unit Tests
+        run: yarn run test:coverage
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/**/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
 
       - name: Snyk Security Scan
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
-          npm run snyk:auth $SNYK_TOKEN
-          npm run snyk:test
+          yarn run snyk:auth $SNYK_TOKEN
+          yarn run snyk:test
