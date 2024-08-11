@@ -38,3 +38,5 @@ next-env.d.ts
 .jest-test-results.json
 
 *storybook.log
+
+.lighthouseci/
